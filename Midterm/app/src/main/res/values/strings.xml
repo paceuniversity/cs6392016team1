@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Midterm Money Exchanger</string>
+    <string name="action_settings">Settings</string>
+    <string name="Conversion">1 dollar = 439.36 Comorian francs.</string>
+    <string name="enterDollars">Enter Dollars</string>
+    <string name="btnConvert">Convert</string>
+</resources>
