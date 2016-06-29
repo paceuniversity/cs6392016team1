@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Eventage</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">Eventage</string>
+    <string name="enable_phone">Enable Phone Logging</string>
+    <string name="enable_SMS">Enable SMS Message Logging</string>
+    <string name="enable_GPS">Enable GPS Location Reporting</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <string-array name="menu_items">
+        <item>Gallery</item>
+        <item>Facebook</item>
+        <item>Twitter</item>
+        <item>Settings</item>
+        <item>Logout</item>
+    </string-array>
+
+    <string-array name="icons">
+        <item>@drawable/ic_gallery</item>
+        <item>@drawable/ic_facebook_icon</item>
+        <item>@drawable/ic_twitter_icon</item>
+        <item>@drawable/ic_settings</item>
+        <item>@drawable/ic_logout</item>
+    </string-array>
 </resources>
