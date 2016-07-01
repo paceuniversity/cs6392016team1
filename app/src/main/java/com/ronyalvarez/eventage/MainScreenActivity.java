@@ -20,7 +20,7 @@ public class MainScreenActivity extends AppCompatActivity {
 
     private ListView mDrawerList;
     private DrawerLayout mDrawerLayout;
-    private ArrayAdapter<String> mAdapter;
+    private CustomAdapter mAdapter;
     private ActionBarDrawerToggle mDrawerToggle;
     private String mActivityTitle;
 
@@ -54,35 +54,17 @@ public class MainScreenActivity extends AppCompatActivity {
 
     private void addDrawerItems() {
         String[] menuTitles = getResources().getStringArray(R.array.menu_items);
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menuTitles);
+        int[] menuImages = {
+                R.drawable.ic_gallery,
+                R.drawable.ic_facebook_icon,
+                R.drawable.ic_twitter_icon,
+                R.drawable.ic_settings,
+                R.drawable.ic_logout
+        };
+
+        mAdapter = new CustomAdapter(this, menuTitles, menuImages);
         mDrawerList.setAdapter(mAdapter);
-
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        Toast.makeText(MainScreenActivity.this, "Gallery", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 1:
-                        Toast.makeText(MainScreenActivity.this, "Facebook", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 2:
-                        Toast.makeText(MainScreenActivity.this, "Twitter", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 3:
-                        Toast.makeText(MainScreenActivity.this, "Twitter", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 4:
-                        Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(intentLogin);
-
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
+        
     }
 
     private void setupDrawer() {
