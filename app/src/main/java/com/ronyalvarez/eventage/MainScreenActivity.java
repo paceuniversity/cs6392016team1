@@ -2,30 +2,19 @@ package com.ronyalvarez.eventage;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class MainScreenActivity extends AppCompatActivity {
+public class MainScreenActivity extends FragmentActivity {
 
     private ListView mDrawerList;
     private DrawerLayout mDrawerLayout;
@@ -38,13 +27,6 @@ public class MainScreenActivity extends AppCompatActivity {
         {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main_screen);
-
-            if (savedInstanceState == null)
-            {
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.drawer_layout, new PlaceholderFragment())
-                        .commit();
-            }
 
             final TextView tvWelcomeMessage = (TextView) findViewById(R.id.tvWelcomeMessage);
             final Switch toggle = (Switch) findViewById((R.id.switch1)); //setting the switch button as toggle
@@ -74,6 +56,7 @@ public class MainScreenActivity extends AppCompatActivity {
                                 }
                             else
                                 {
+                                    ResultsFragment result = (ResultsFragment) getSupportFragmentManager().findFragmentById(R.id.results);
                                     setContentView(R.layout.fragment_results); //when we are finished with the event, open results
                                 }
                         }
@@ -85,6 +68,7 @@ public class MainScreenActivity extends AppCompatActivity {
                 }
             else
                 {
+                    ResultsFragment result = (ResultsFragment) getSupportFragmentManager().findFragmentById(R.id.results);
                     setContentView(R.layout.fragment_results);
                 }
 
@@ -94,8 +78,8 @@ public class MainScreenActivity extends AppCompatActivity {
             addDrawerItems();
             setupDrawer();
 
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeButtonEnabled(true);
+            //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            //getSupportActionBar().setHomeButtonEnabled(true);
 
         }
 
@@ -119,14 +103,14 @@ public class MainScreenActivity extends AppCompatActivity {
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Navigation!");
+                //getSupportActionBar().setTitle("Navigation!");
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mActivityTitle);
+                //getSupportActionBar().setTitle(mActivityTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -146,49 +130,6 @@ public class MainScreenActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    public static class PlaceholderFragment extends Fragment
-    {
-        public PlaceholderFragment()
-
-        {
-
-        }
-
-        //@Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-            {
-                View rootView = inflater.inflate(R.layout.fragment_results, container, false);
-
-                String[] events = {"Picture taken @ 10:32", "Text to Jessie", "Tweet: 'Amazing Time!'" +
-                        "Phone Call to John M", "Instagram post @ 2 PM", "Text to Simon"}; //this array is being used as an example
-
-                List<String> eventsAL = new ArrayList<String>(Arrays.asList(events));
-
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                        R.layout.fragment_results,
-                        R.id.textView2,
-                        eventsAL);
-
-                ListView listView = (ListView) rootView.findViewById(R.id.listView);
-                listView.setAdapter(adapter);
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-                        {
-                            if (position == 1)
-                                {
-                                    //code here to possibly delete events or something
-                                }
-                        }
-
-                });
-
-            return rootView;
-        }
     }
 
 
