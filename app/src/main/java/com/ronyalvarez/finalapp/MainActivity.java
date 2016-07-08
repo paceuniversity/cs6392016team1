@@ -29,16 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), Images.class);
-                startActivity(intent);
-
-            }
-        });
 
     }
 
