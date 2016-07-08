@@ -3,15 +3,17 @@ package com.ronyalvarez.finalapp;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragment extends Fragment implements EventNameFragment.EventNameDialogListener {
 
     public MainActivityFragment() {
     }
@@ -31,6 +33,30 @@ public class MainActivityFragment extends Fragment {
 
             }
         });
+
+        Button bStartStop = (Button)v.findViewById(R.id.bStartStop);
+        bStartStop.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEditDialog();
+            }
+        });
         return v;
     }
+
+    public void showEditDialog(){
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        EventNameFragment eventNameFragment = new EventNameFragment();
+        eventNameFragment.setTargetFragment(this, 0);
+        eventNameFragment.show(fm, "fragment_event_name");
+    }
+
+    @Override
+    public void onFinishEditDialog(final String inputText){
+        final TextView textView = (TextView)getView().findViewById(R.id.tvEvent);
+        textView.setText(inputText);
+        textView.setVisibility(TextView.VISIBLE);
+
+    }
+
 }
