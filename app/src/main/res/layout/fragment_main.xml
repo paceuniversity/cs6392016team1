@@ -12,7 +12,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go To Images"
+        android:text="@string/go_to_images"
         android:id="@+id/button"
         android:layout_marginBottom="50dp"
         android:layout_alignParentBottom="true"
@@ -22,7 +22,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Event"
+        android:text="@string/start_event"
         android:id="@+id/bStartStop"
         android:layout_alignTop="@+id/button"
         android:layout_alignParentLeft="true"
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="none"
+        android:text="@string/none"
         android:id="@+id/tvEvent"
         android:visibility="invisible"
         android:layout_centerHorizontal="true" />

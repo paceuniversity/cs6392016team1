@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -37,9 +39,17 @@ public class ImagesFragment extends Fragment {
         cursor = getActivity().getContentResolver().query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, list, null, null, MediaStore.Images.Thumbnails._ID);
         columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Thumbnails._ID);
 
-        GridView sdcardimage = (GridView)v.findViewById(R.id.gridview);
+        final GridView sdcardimage = (GridView)v.findViewById(R.id.gridview);
         ImageAdapter adapter=new ImageAdapter(getContext());
         sdcardimage.setAdapter(adapter);
+
+        sdcardimage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                sdcardimage.setSelected(true);
+                Toast.makeText(getContext(),"this is "+position,Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return v;
     }
