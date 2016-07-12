@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "529190639494",
+    "firebase_url": "https://eventage-cb610.firebaseio.com",
+    "project_id": "eventage-cb610",
+    "storage_bucket": "eventage-cb610.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529190639494:android:ef04f99b2f8d420a",
+        "android_client_info": {
+          "package_name": "com.ronyalvarez.finalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529190639494-81i537o98vffckrks5c4p7dtk5ol5cej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDWwUCtP4fzDGxoagss5SobG99ptOeC9U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
