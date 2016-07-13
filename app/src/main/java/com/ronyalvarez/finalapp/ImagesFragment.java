@@ -1,11 +1,15 @@
 package com.ronyalvarez.finalapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,8 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.File;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -48,6 +54,28 @@ public class ImagesFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 sdcardimage.setSelected(true);
                 Toast.makeText(getContext(),"this is "+position,Toast.LENGTH_SHORT).show();
+
+//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://google.com"));
+//                startActivity(intent);
+
+                cursor.moveToPosition(position);
+                int imageID = cursor.getInt(columnIndex);
+
+                Uri uri = Uri.withAppendedPath(
+                        MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, "" + imageID);
+                //content://media/external/images/thumbnails/71
+
+                Uri uriImage = Uri.parse("file://content://media/external/images/thumbnails/71");
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_STREAM, uriImage);
+                startActivity(Intent.createChooser(intent, "Share via"));
+
+                //Log.i("IMAGE ID -------->", "" + uri);
+
+
+
             }
         });
 

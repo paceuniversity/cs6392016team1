@@ -1,6 +1,7 @@
 package com.ronyalvarez.finalapp;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -29,6 +30,11 @@ public class MainActivityFragment extends Fragment implements EventNameFragment.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
+
+        Typeface myTypeFace = Typeface.createFromAsset(getActivity().getAssets(), "Angeline Vintage_Demo.ttf");
+        TextView title = (TextView) v.findViewById(R.id.tvEventage);
+        assert title != null;
+        title.setTypeface(myTypeFace);
 
         Button button = (Button)v.findViewById(R.id.button);
         button.setOnClickListener(new Button.OnClickListener() {
